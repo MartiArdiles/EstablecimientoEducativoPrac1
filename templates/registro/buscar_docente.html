@@ -1,0 +1,17 @@
+{% load static %}
+<h1>Buscar por apellido:</h1>
+
+<form method="GET">{% csrf_token %} {{ form.as_p }}
+    <input type="text" name="kword" id="kword" placeholder="Ingrese apellido">
+    <button type="submit">Buscar</button>
+</form>
+
+<h2>Resultados de la búsqueda: </h2>
+<ul>
+    
+    {% for docente in lista %}
+        <li>{{ docente }}</li>
+
+    {% endfor %}
+        
+</ul>

@@ -1,0 +1,21 @@
+<!--Para heredar los archivos de base.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+<!--Se redefine el archivo-->
+
+{% block content %}
+<!--Agrego un logo-->
+<div align="center" class="container">
+    <img class="img-fluid" src= "{% static 'img/logo.png' %}" width="200" height="200" alt="Logo">
+</div>
+
+<div align="center" text="black">
+    <b><p size="20px">ESTABLECIMIENTO EDUCAIVO</p></b>
+    <b><p size="20px">Trabajo Final Practica I</p></b>
+    <b><p size="16px">Martina Ardiles</p></b>
+</div>
+
+{% endblock content %}
+    
+

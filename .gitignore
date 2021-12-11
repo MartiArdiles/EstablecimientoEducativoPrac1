@@ -1,0 +1,6 @@
+#Archivos que no quiero que se suban a GitHub para no entorpecer el
+#funcionamiento
+*.pyc
+__pycache__
+db.sqlite3
+.Ds_Store

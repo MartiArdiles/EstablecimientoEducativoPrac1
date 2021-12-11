@@ -1,0 +1,77 @@
+<!--Crear una tabla para presentar el listado de docentes-->
+
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<div class="container">
+
+    <div class="row">
+        <h1>Lista de personal docente</h1>
+    </div>
+    <!--Buscador en la parte superior-->
+    <div class="row justify-content-end mt-2">
+        <form class="form-inline" method="GET"> {% csrf_token %}
+            <input type="text" class="form-control mr-sm-2" placeholder="Inserte texto" id="kword" name="kword">
+            <button type="submit" class="btn btn-primary mr-sm-2">Buscar</button>
+            <a class="btn btn-info" href="{% url 'registro_app:crear_docente' %}">(+)Agregar</a>
+        </form> 
+    </div>
+
+    <div class="row">
+        <table class="table table-hover mt-2">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Apellido</th>
+                    <th>Nombre</th>
+                    <th>Materia</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--Va iterando con la lista de todos los docentes y lo genera automáticamente-->
+                {% for docente in lista %}
+                <tr>
+                    <td>{{docente.last_name}}</td>
+                    <td>{{docente.first_name}}</td>
+                    <td>{{docente.get_materia_display}}</td>
+                    <td>
+                        <!--Creo los botones de acciones-->
+                        <a class="btn btn-info" href="{% url 'registro_app:docente_detalle' docente.id %}">Ver</a>
+                        <a class="btn btn-info" href="{% url 'registro_app:modificar_docente' docente.id %}">Modificar</a>
+                        <a class="btn btn-info" href="{% url 'registro_app:eliminar_docente' docente.id %}">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row">
+        {% if is_paginated %}
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+            <!--Si el paginado tiene página anterior, aparece y se le asigna el enlace a la
+            página anterior de la que estoy-->
+                <li class="page-item"><a class="page-link" href="?page={{page_obj.previous_page_number}}">Anterior</a></li>
+            {% endif %}
+            <!--Por cada página que tenga el listado-->
+            {% for pagina in paginator.page_range %}
+            <!--Marca la página en la que estoy parado-->
+                {% ifequal pagina page_obj.numer  %} 
+                    <li class="page-item active"><a class="page-link" href="#">{{pagina}}</a></li>
+                {% else %}
+                <!--Sino, creo un enlace a la página con el número x-->
+                    <li class="page-item"><a class="page-link" href="?page={{pagina}}">{{pagina}}</a></li>
+                {% endifequal %}
+            {% endfor %}
+            {% if page_obj.has_next %}
+                <!--Si el listado tiene página siguiente, aparece el botón de siguiente con el
+                enlace a la siguiente página-->
+                <li class="page-item"><a class="page-link" href="?page={{page_obj.next_page_number}}">Siguiente</a></li>
+            {% endif %}
+        </ul>
+        {% endif %}
+    </div>
+
+</div>
+    
+{% endblock content %}

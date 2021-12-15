@@ -1,17 +1,21 @@
-<!--Dropdown que lista oficinas-->
-
 {% extends 'base.html' %} {% load static %} {% block content %}
+
 <div class="container">
     <div class="row">
-        <h1>Listado de oficinas</h1>
+        <h1>Listado de oficinas:</h1>
     </div>
+        
     <div class="row">
-        <ul>
-            <h3>Limpieza</h3>
-            <h3>Adminstrativo</h3>
-            <h3>Tesorería</h3>
-            <h3>Dirección</h3>
-        </ul>
+        <div class="table table-hover mt-2">
+            <tbody>
+                <tr>
+                    <ul>Limpieza</ul>
+                    <ul>Administrativo</ul>
+                    <ul>Tesorería</ul>
+                    <ul>DIrección</ul>
+                </tr>
+            </tbody>
+        </div>
     </div>
 </div>
 {% endblock content %}

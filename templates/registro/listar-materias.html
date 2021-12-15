@@ -1,19 +1,22 @@
 <!--Dropdown que lista materias-->
-
 {% extends 'base.html' %} {% load static %} {% block content %}
+
 <div class="container">
     <div class="row">
-        <h1>Listado de materias</h1>
+        <h1>Listado de materias:</h1>
     </div>
     <div class="row">
-        <ul>
-            <h3>Programación 2</h3>
-            <h3>Práctica 1</h3>
-            <h3>Matemática Aplicada</h3>
-            <h3>Modelado de Sistemas</h3>
-            <h3>Sistemas Operativos</h3>
-            <h3>Base de Datos</h3>
-        </ul>
+        <div class="table table-hover mt-2">
+            <tbody>
+                <ul>Programación 2</ul>
+                <ul>Práctica 1</ul>
+                <ul>Matemática Aplicada</ul>
+                <ul>Modelado de Sistemas</ul>
+                <ul>Sistemas Operativos</ul>
+                <ul>Base de Datos</ul>
+            </tbody>
+            
+        </div>
     </div>
 </div>
-{% endblock content %}
+{% endblock content %}ent %}
